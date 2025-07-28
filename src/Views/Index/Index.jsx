@@ -1,16 +1,10 @@
-import { useContext, useEffect } from 'react'
-import ReactGA from 'react-ga'
-import './Index.scss';
-import { Instagram, Linkedin, Twitter } from '../../assets/Svgs';
+import { useContext, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import nbVisitContext from '../../../context/nbVisitContext';
-import { HashLink } from 'react-router-hash-link'
-import { Link, redirect, useLocation } from 'react-router-dom'
-import Robot from '../../Components/Skills/Robot/Robot'
-import Widget from '../../Components/Skills/Widget/Widget'
+import { Linkedin } from '../../assets/Svgs';
 import Skills from '../Skills/Skills';
+import './Index.scss';
 
-ReactGA.initialize("UA-217706878-1");
-ReactGA.pageview(window.location.pathname + window.location.search);
 
 const Index = ({ darkmode, closeAll, isLogin }) => {
 
