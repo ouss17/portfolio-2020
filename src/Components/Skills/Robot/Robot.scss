@@ -1,0 +1,100 @@
+.widget-robot {
+    width: 500px;
+    // height: 290px;
+
+    @media (max-width: 1024px) {
+        margin-bottom: 20px;
+    }
+    @media (max-width: 768px) {
+        margin-bottom: 20px;
+    }
+
+    .title-widget {
+        font-size: 2em;
+        @media (max-width: 470px) {
+            font-size: 1.4em;
+        }
+    }
+
+    .eye {
+        -webkit-filter: drop-shadow(1px 1px 10px white);
+        filter: drop-shadow(1px 1px 10px white);
+        fill: white !important;
+    }
+
+    .click-antenna,
+    .mouth,
+    .click-noeud {
+        cursor: pointer;
+    }
+    .fiche {
+        border-radius: 15px;
+        background: rgba(155, 155, 155, 0.6);
+        padding: 10px;
+        box-shadow: 71px 11px 11px rgba(0, 0, 0, 0.03);
+        position: absolute;
+        top: 0;
+        right: 54%;
+        width: 50%;
+        max-height: 500px;
+        transition: all 500ms;
+        -webkit-backdrop-filter: blur(6px);
+        overflow-y: auto;
+        backdrop-filter: blur(6px);
+        @media (max-width: 1024px) {
+            width: 60%;
+        }
+        @media (max-width: 592px) {
+            width: 90%;
+        }
+
+        .list-fiche {
+            padding: 0;
+            list-style-type: none;
+            li {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                padding-bottom: 10px;
+                img {
+                    width: 10%;
+                    margin-right: 5px;
+                }
+            }
+        }
+        .cross {
+            position: absolute;
+            right: 4%;
+            cursor: pointer;
+            font-size: 1.4em;
+        }
+        .title-fiche {
+            text-align: center;
+            font-size: 2em;
+            margin-top: 0;
+        }
+    }
+        .clickOnMe {
+            position: absolute;
+            top: 20%;
+            width: 80px;
+            left: 70%;
+            font-size: 0.8em;
+            background: #6f7879;
+            padding: 10px;
+            border-radius: 60px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            @media (max-width: 1024px) {
+                                width: 40px;
+                                    height: 40px;
+                                    font-size: 0.5em;
+                }
+            p{
+                color: white;
+                text-align: center;
+            }
+        }
+}

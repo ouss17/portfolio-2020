@@ -1,0 +1,18 @@
+.language {
+    background: #ece6e6;
+    padding: 10px;
+    border-radius: 15px;
+    box-shadow: 71px 11px 11px rgba(0, 0, 0, 0.06);
+    margin-bottom: 20px;
+    .charge-bar {
+        width: 200px;
+        background: #a5a5a5ba;
+        height: 8px;
+        border-radius: 75px;
+        .charge {
+            background: #0043ff;
+            height: 8px;
+            border-radius: 85px;
+        }
+    }
+}

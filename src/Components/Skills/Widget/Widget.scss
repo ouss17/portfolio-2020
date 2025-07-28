@@ -1,0 +1,30 @@
+.about{
+    padding: 10px;
+    position: relative;
+    i {
+        color: #308bf9;
+        text-decoration: none;
+    }
+    p{
+        @media(max-width:470px){
+            font-size: 0.6em;
+        }
+    }
+    .title-name {
+        text-align: center;
+        font-size: 2em;
+        font-weight: 800;
+        @media(max-width:470px){
+            font-size: 1.4em;
+        }
+    }
+
+    .social {
+        display: flex;
+        align-items: center;
+        a{
+            margin-right: 20px;
+            font-size: 1.4em;
+        }
+    }
+}

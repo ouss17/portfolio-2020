@@ -1,0 +1,69 @@
+p.heure {
+    font-size: 2em;
+    margin: 0;
+}
+
+p.current-day {
+    color: #e11516;
+}
+
+.controls{
+    margin-bottom: 10px;
+    button{
+        border: none;
+        background: none;
+        color: white;
+        cursor: pointer;
+        font-size: 1em;
+    }
+}
+
+.head,
+.body {
+    display: flex;
+    flex-wrap: wrap;
+    width: 364px;
+    @media(max-width:470px){
+        width: 250px;
+        font-size: 0.7em;
+    }
+}
+
+.day {
+    width: 50px;
+    height: 50px;
+    color: #fff;
+    margin: 1px;
+    cursor: pointer;
+    transition: all 500ms;
+
+    &:hover{
+        outline: 1px solid crimson;
+    }
+
+    @media(max-width:470px){
+        width: 30px;
+        height: 30px;
+    }
+}
+
+.day {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.day.week {
+    background: none;
+    cursor: default;
+    &:hover{
+        outline: none;
+    }
+}
+
+.day.inactive {
+    color: grey;
+}
+
+.day.selected {
+    background: rgb(85, 85, 226);
+}

@@ -1,0 +1,100 @@
+.realDes{
+    transition: all 500ms;
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    position: absolute;
+    top: 0;
+    overflow-y: auto;
+    text-align: center;
+    z-index: 200;
+    background: white;
+    
+    .title-real-des {
+        font-style: italic;
+        text-transform: capitalize;
+    }
+    .slider-real-des{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        max-width: 60%;
+        margin: 0 auto;
+        overflow-x: auto;
+        video {
+            height: 420px;
+        }
+        .slick-slider.slick-initialized {
+            width: 230px;
+        }
+        .slide{
+            cursor: pointer;
+        }
+    }
+    .img-real-des {
+        width: 50%;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        .slide{
+            width: 100%;
+        }
+    }
+    .usage-technos{
+
+        p{
+            font-weight: 700;
+        }
+        .technos {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            flex-wrap: wrap;
+            color: black;
+        }
+    }
+    .return-real{
+        margin: 10px;
+        padding-bottom: 30px;
+        color: black;
+        .rereal {
+            padding: 10px;
+            background: gainsboro;
+            border-radius: 7px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 500ms;
+            &:hover{
+                border: 1px solid #0043ff;
+            }
+        }
+    }
+
+    .big-picture {
+        position: absolute;
+        width: 80%;
+        height: 90%;
+        top: 50%;
+        right: 50%;
+        transform: translate(50%, -50%);
+        background: rgba(0,0,0,0.9);
+        align-items: center;
+        justify-content: center;
+        #big-picture {
+            max-width: 100%;
+            max-height: 100%;
+        }
+        .cross-picture {
+            position: absolute;
+            top: -5%;
+            right: 3%;
+            font-size: 2em;
+            cursor: pointer;
+            color: white;
+            background-color: rgba(0,0,0,0.4);
+            padding: 2px 5px;
+        }
+    }
+}
