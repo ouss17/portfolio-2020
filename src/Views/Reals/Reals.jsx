@@ -22,7 +22,7 @@ import evasion from '../../Images/evasion1.png'
 import linked from '../../Images/linked1.jpg'
 import todoreaction from '../../Images/todoreaction1.jpg'
 import gachanote from '../../Images/gachanote1.jpg'
-import jiamini from '../../Images/jiamini.png'
+import jiamini from '../../Images/jiamini1.png'
 import eclat from '../../Images/eclat1.png'
 
 
