@@ -20,6 +20,10 @@ import ps3Ui from '../../Images/ps3_ui.png'
 import monades from '../../Images/monades1.png'
 import evasion from '../../Images/evasion1.png'
 import linked from '../../Images/linked1.jpg'
+import todoreaction from '../../Images/todoreaction1.jpg'
+import gachanote from '../../Images/gachanote1.jpg'
+import jiamini from '../../Images/jiamini.png'
+import eclat from '../../Images/eclat1.png'
 
 
 import './Reals.scss'
@@ -55,7 +59,11 @@ const Reals = ({ darkmode, closeAll, isLogin }) => {
         { img: ps3Ui, alt: "presentation", title: "ps3Ui", name: "Playstation 3 UI" },
         { img: monades, alt: "presentation", title: "monades", name: "Presentation entreprise" },
         { img: evasion, alt: "Evasion", title: "evasion", name: "Evasion" },
-        // { img: linked, alt: "presentation", title: "linked", name: "Linked" },
+        { img: linked, alt: "presentation", title: "linked", name: "Linked" },
+        { img: jiamini, alt: "jiamini", title: "jiamini", name: "Jiamini" },
+        { img: eclat, alt: "eclat", title: "eclat", name: "Éclat Solidaire" },
+        { img: todoreaction, alt: "todoreaction", title: "todoreaction", name: "ToDo'Reaction" },
+        { img: gachanote, alt: "gachanote", title: "gachanote", name: "Gachanote" }
     ])
 
     // click du projet

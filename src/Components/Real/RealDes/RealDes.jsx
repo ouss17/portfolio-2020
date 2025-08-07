@@ -49,6 +49,29 @@ import linkedSlide4 from '../../../Images/linked4.jpg'
 
 import ps3Ui from '../../../Images/ps3_ui.png'
 
+import todoreaction1 from '../../../Images/todoreaction1.jpg'
+import todoreaction2 from '../../../Images/todoreaction2.jpg'
+import todoreaction3 from '../../../Images/todoreaction3.jpg'
+import todoreaction4 from '../../../Images/todoreaction4.jpg'
+
+import gachanote1 from '../../../Images/gachanote1.jpg'
+import gachanote2 from '../../../Images/gachanote2.jpg'
+import gachanote3 from '../../../Images/gachanote3.jpg'
+import gachanote4 from '../../../Images/gachanote4.jpg'
+
+import jiamini1 from '../../../Images/jiamini1.png'
+import jiamini2 from '../../../Images/jiamini2.png'
+import jiamini3 from '../../../Images/jiamini3.png'
+import jiamini4 from '../../../Images/jiamini4.png'
+
+import eclat1 from '../../../Images/eclat1.png'
+import eclat2 from '../../../Images/eclat2.png'
+import eclat3 from '../../../Images/eclat3.png'
+import eclat4 from '../../../Images/eclat4.png'
+import eclat5 from '../../../Images/eclat5.png'
+import eclat6 from '../../../Images/eclat6.png'
+import eclat7 from '../../../Images/eclat7.png'
+
 
 function SampleNextArrow({ slider }) {
     return (
@@ -130,6 +153,37 @@ const RealDes = ({ darkmode, showRealDes, setShowRealDes, title }) => {
         { img: linkedSlide3, alt: "presentation" },
         { img: linkedSlide4, alt: "presentation" }
     ])
+
+    const [todoreactionSlides] = useState([
+    { img: todoreaction1, alt: "todoreaction" },
+    { img: todoreaction2, alt: "todoreaction" },
+    { img: todoreaction3, alt: "todoreaction" },
+    { img: todoreaction4, alt: "todoreaction" }
+])
+
+const [gachanoteSlides] = useState([
+    { img: gachanote1, alt: "gachanote" },
+    { img: gachanote2, alt: "gachanote" },
+    { img: gachanote3, alt: "gachanote" },
+    { img: gachanote4, alt: "gachanote" }
+])
+
+const [jiaminiSlides] = useState([
+    { img: jiamini1, alt: "jiamini" },
+    { img: jiamini2, alt: "jiamini" },
+    { img: jiamini3, alt: "jiamini" },
+    { img: jiamini4, alt: "jiamini" }
+])
+
+const [eclatSlides] = useState([
+    { img: eclat1, alt: "eclat" },
+    { img: eclat2, alt: "eclat" },
+    { img: eclat3, alt: "eclat" },
+    { img: eclat4, alt: "eclat" },
+    { img: eclat5, alt: "eclat" },
+    { img: eclat6, alt: "eclat" },
+    { img: eclat7, alt: "eclat" }
+])
 
 
     const returnReal = () => {
@@ -606,6 +660,157 @@ const RealDes = ({ darkmode, showRealDes, setShowRealDes, title }) => {
                         <div className="technos">
                             <Languages techno={"REACT NATIVE"} percentage={80} />
                             <Languages techno={"PHP"} percentage={20} />
+                        </div>
+                    </div>
+                    <div className="return-real">
+                        <span className="rereal" onClick={returnReal} >Retour</span>
+                    </div>
+                    <div className="big-picture" style={{ display: displayImage }}>
+                        <img src={imageClicked} alt="big" id="big-picture" onClick={ClosePicture} />
+                        <p className="cross-picture" onClick={ClosePicture}>X</p>
+                    </div>
+                </div>
+            )
+        case "todoreaction":
+            return (
+                <div className="realDes" style={{ transform: "scale(" + showRealDes + ")", backgroundColor: (darkmode ? "#1c1d1f" : "white"), color: (darkmode ? "white" : "black") }} >
+                    <h2 className="title-real-des">ToDo'Réac'tion</h2>
+                    <div className="slider-real-des">
+                        <Slider ref={slider} {...settings}>
+                            {todoreactionSlides.map((slide, idx) => (
+                                <img className="slide" src={slide.img} alt={slide.alt} key={idx} onClick={() => ScaleImage(slide.img)} />
+                            ))}
+                        </Slider>
+                    </div>
+                    <div className="real-des">
+                        <p className="description">
+                            ToDo'Réac'tion est une application de gestion de tâches moderne, réalisée avec React Native, Redux Toolkit et Expo Router.
+                            <ul>
+                                <li>Ajout, édition et suppression de tâches</li>
+                                <li>Gestion de la date et de l'heure d'échéance pour chaque tâche</li>
+                                <li>Catégorisation des tâches : crée tes propres catégories, choisis leur couleur, filtre les tâches par catégorie grâce à des "chips"</li>
+                                <li>Palette de couleurs : chaque tâche peut avoir une couleur personnalisée parmi 10 proposées</li>
+                                <li>Thèmes visuels : change le fond de l'application (clair, sombre, bleu, etc.), le choix est persistant</li>
+                                <li>Interface moderne et responsive : expérience utilisateur fluide sur mobile</li>
+                            </ul>
+                        </p>
+                    </div>
+                    <div className="usage-technos">
+                        <p>Technos utilisées</p>
+                        <div className="technos">
+                            <Languages techno={"EXPO"} percentage={40} />
+                            <Languages techno={"REACT NATIVE"} percentage={30} />
+                            <Languages techno={"TYPESCRIPT"} percentage={20} />
+                            <Languages techno={"REDUX TOOLKIT"} percentage={10} />
+                        </div>
+                    </div>
+                    <div className="return-real">
+                        <span className="rereal" onClick={returnReal} >Retour</span>
+                    </div>
+                    <div className="big-picture" style={{ display: displayImage }}>
+                        <img src={imageClicked} alt="big" id="big-picture" onClick={ClosePicture} />
+                        <p className="cross-picture" onClick={ClosePicture}>X</p>
+                    </div>
+                </div>
+            )
+        case "gachanote":
+            return (
+                <div className="realDes" style={{ transform: "scale(" + showRealDes + ")", backgroundColor: (darkmode ? "#1c1d1f" : "white"), color: (darkmode ? "white" : "black") }} >
+                    <h2 className="title-real-des">GachaNote</h2>
+                    <div className="slider-real-des">
+                        <Slider ref={slider} {...settings}>
+                            {gachanoteSlides.map((slide, idx) => (
+                                <img className="slide" src={slide.img} alt={slide.alt} key={idx} onClick={() => ScaleImage(slide.img)} />
+                            ))}
+                        </Slider>
+                    </div>
+                    <div className="real-des">
+                        <p className="description">
+                            GachaNote est l’outil idéal pour tous les joueurs de jeux gacha qui souhaitent :
+                            <ul>
+                                <li>Suivre précisément leurs dépenses et tirages sur chaque jeu.</li>
+                                <li>Visualiser leur historique et leurs statistiques de façon claire et graphique.</li>
+                                <li>Prendre conscience de leurs habitudes de consommation sur les gachas.</li>
+                                <li>Comparer leurs dépenses entre plusieurs jeux et sur différentes périodes.</li>
+                            </ul>
+                        </p>
+                    </div>
+                    <div className="usage-technos">
+                        <p>Technos utilisées</p>
+                        <div className="technos">
+                            <Languages techno={"EXPO"} percentage={40} />
+                            <Languages techno={"REACT NATIVE"} percentage={30} />
+                            <Languages techno={"TYPESCRIPT"} percentage={20} />
+                            <Languages techno={"REDUX TOOLKIT"} percentage={10} />
+                        </div>
+                    </div>
+                    <div className="return-real">
+                        <span className="rereal" onClick={returnReal} >Retour</span>
+                    </div>
+                    <div className="big-picture" style={{ display: displayImage }}>
+                        <img src={imageClicked} alt="big" id="big-picture" onClick={ClosePicture} />
+                        <p className="cross-picture" onClick={ClosePicture}>X</p>
+                    </div>
+                </div>
+            )
+        case "jiamini":
+            return (
+                <div className="realDes" style={{ transform: "scale(" + showRealDes + ")", backgroundColor: (darkmode ? "#1c1d1f" : "white"), color: (darkmode ? "white" : "black") }} >
+                    <h2 className="title-real-des">Jiamini</h2>
+                    <div className="slider-real-des">
+                        <Slider ref={slider} {...settings}>
+                            {jiaminiSlides.map((slide, idx) => (
+                                <img className="slide" src={slide.img} alt={slide.alt} key={idx} onClick={() => ScaleImage(slide.img)} />
+                            ))}
+                        </Slider>
+                    </div>
+                    <div className="real-des">
+                        <p className="description">
+                            Jiamini est une application mobile qui facilite l'apprentissage scolaire en Afrique en proposant des cours adaptés (PDF, vidéo, image, jeu).<br />
+                            Elle propose aussi l'histoire de personnages historiques selon le pays sélectionné.
+                        </p>
+                    </div>
+                    <div className="usage-technos">
+                        <p>Technos utilisées</p>
+                        <div className="technos">
+                            <Languages techno={"EXPO"} percentage={40} />
+                            <Languages techno={"JAVA (BACK)"} percentage={30} />
+                            <Languages techno={"REACT NATIVE"} percentage={15} />
+                            <Languages techno={"POSTGRESQL"} percentage={15} />
+                        </div>
+                    </div>
+                    <div className="return-real">
+                        <span className="rereal" onClick={returnReal} >Retour</span>
+                    </div>
+                    <div className="big-picture" style={{ display: displayImage }}>
+                        <img src={imageClicked} alt="big" id="big-picture" onClick={ClosePicture} />
+                        <p className="cross-picture" onClick={ClosePicture}>X</p>
+                    </div>
+                </div>
+            )
+        case "eclat":
+            return (
+                <div className="realDes" style={{ transform: "scale(" + showRealDes + ")", backgroundColor: (darkmode ? "#1c1d1f" : "white"), color: (darkmode ? "white" : "black") }} >
+                    <h2 className="title-real-des">Éclat Solidaire</h2>
+                    <div className="slider-real-des">
+                        <Slider ref={slider} {...settings}>
+                            {eclatSlides.map((slide, idx) => (
+                                <img className="slide" src={slide.img} alt={slide.alt} key={idx} onClick={() => ScaleImage(slide.img)} />
+                            ))}
+                        </Slider>
+                    </div>
+                    <div className="real-des">
+                        <p className="description">
+                            Éclat Solidaire est un site qui recense les associations ayant peu de visibilité et les événements disponibles.<br />
+                            On peut s'inscrire bénévolement à une association et faire des dons si on le souhaite.
+                        </p>
+                    </div>
+                    <div className="usage-technos">
+                        <p>Langages utilisés</p>
+                        <div className="technos">
+                            <Languages techno={"REACT"} percentage={50} />
+                            <Languages techno={"NODEJS"} percentage={30} />
+                            <Languages techno={"JAVASCRIPT"} percentage={20} />
                         </div>
                     </div>
                     <div className="return-real">
