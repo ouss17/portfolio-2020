@@ -341,22 +341,42 @@
         @media(max-width:750px){
             left: 0;
             width: 90%;
+            justify-content: center;
+            padding: 10px;
         }
         @media(max-width:535px){
-            justify-content: center;
+            .real {
+                width: 90vw;
+                max-width: 320px;
+                height: 160px; // <-- Plus grand sur mobile aussi
+                margin-bottom: 20px;
+            }
+        }
+        @media(max-width:400px){
+            .real {
+                width: 98vw;
+                height: 120px; // <-- Plus grand sur mobile petit écran
+                font-size: 0.9em;
+            }
         }
 
         .real {
             width: 190px;
-            height: 75px;
+            height: 120px; // <-- Augmente la hauteur ici (ex : 120px ou plus)
             margin-bottom: 40px;
             border: 1px solid black;
             transition: all 300ms;
             border-radius: 8px;
-            &:hover{
-                box-shadow: 5px 7px 0px rgba(0, 0, 0, 0.08);
-                z-index: 100;
+            cursor: pointer;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+
+            &:hover, &:focus {
+                transform: translateY(-6px) scale(1.03);
+                box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+                background: rgba(0,0,0,0.03);
+                outline: none;
             }
+
             img {
                 width: 100%;
                 height: 100%;
@@ -364,12 +384,25 @@
                 border-radius: 8px;
                 cursor: pointer;
             }
-            p{
+            p {
                 margin: 0;
                 text-transform: capitalize;
-                font-size: 0.8em;
+                font-size: 1em;         // plus grand
+                font-weight: bold;      // en gras
                 text-align: center;
+                color: #222;
+                background: rgba(255,255,255,0.85); // fond blanc semi-transparent
+                border-radius: 0 0 8px 8px;
+                padding: 4px 0 2px 0;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                // Optionnel : ombre portée pour le texte
+                text-shadow: 0 1px 2px rgba(0,0,0,0.08);
             }
+
+            position: relative; // pour positionner le <p> sur l'image
         }
     }
 
@@ -403,4 +436,41 @@ button.slick-arrow {
 .slick-slide {
     margin-right: 10px;
     overflow: hidden;
+}
+
+.real:focus {
+    outline: 2px solid #1976d2;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.2);
+    z-index: 2;
+}
+
+.real-des-modal {
+    transition: transform 0.3s cubic-bezier(.4,2,.6,1), opacity 0.3s;
+    transform: scale(0.95);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 10;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 320px;
+    max-width: 90vw;
+    max-height: 90vh;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    transform: translate(-50%, -50%) scale(0.95);
+}
+
+.real-des-modal.open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+#search-real:focus {
+    outline: 2px solid #1976d2;
+    background: #fff;
+    color: #222;
 }

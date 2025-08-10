@@ -45,7 +45,7 @@ const Reals = ({ darkmode, closeAll, isLogin }) => {
 
     // images
     const [reals] = useState([
-        { img: kny, alt: "presentation", title: "kny", name: "Kimetsu no yaiba presentation" },
+        { img: kny, alt: "Présentation Kimetsu no Yaiba", title: "kny", name: "Kimetsu no yaiba presentation" },
         { img: pcbp, alt: "presentation", title: "pcbp", name: "Computer buying pro" },
         { img: streamingWorld, alt: "presentation", title: "streamingWorld", name: "Streaming world" },
         { img: evilHunter, alt: "presentation", title: "evilHunter", name: "Evil hunter" },
@@ -112,6 +112,14 @@ const Reals = ({ darkmode, closeAll, isLogin }) => {
         }
     }
 
+    useEffect(() => {
+        const handleEsc = (e) => {
+            if (e.key === "Escape") setShowRealDes("0");
+        };
+        window.addEventListener("keydown", handleEsc);
+        return () => window.removeEventListener("keydown", handleEsc);
+    }, []);
+
     return (
         <div className="real-content" onClick={closeAll} style={{ backgroundColor: (darkmode ? "#1c1d1f" : "white"), color: (darkmode ? "white" : "black") }}>
             {/* {(isLogin === false) ? redirect("/login") : null} */}
@@ -167,17 +175,42 @@ const Reals = ({ darkmode, closeAll, isLogin }) => {
             </div>
             <div className="reals" onClick={HideSidebarMobile}>
                 {
-                    reals.map((real, index) => {
-                        return (
-                            <div className="real" key={index} >
-                                <img onClick={() => showDes(real.title)} src={real.img} alt={real.alt} />
-                                <p>{real.name}</p>
-                            </div>
-                        )
-                    })
+                    reals.map((real, index) => (
+                        <div
+                            className="real"
+                            key={index}
+                            tabIndex={0}
+                            role="button"
+                            onClick={() => showDes(real.title)}
+                            onKeyDown={e => (e.key === "Enter" || e.key === " ") && showDes(real.title)}
+                            aria-label={`Voir ${real.name}`}
+                        >
+                            <img src={real.img} alt={real.alt} />
+                            <p>{real.name}</p>
+                        </div>
+                    ))
                 }
             </div>
-            <RealDes style={{ transform: "scale(" + setShowRealDes + ")" }} darkmode={darkmode} title={clickImage} showRealDes={showRealDes} setShowRealDes={setShowRealDes} />
+            {showRealDes !== "0" && (
+                <div
+                    className="real-des-backdrop"
+                    onClick={() => setShowRealDes("0")}
+                    style={{
+                        position: "fixed",
+                        top: 0, left: 0, right: 0, bottom: 0,
+                        background: "rgba(0,0,0,0.25)",
+                        zIndex: 9
+                    }}
+                />
+            )}
+            <RealDes
+                className={`real-des-modal${showRealDes !== "0" ? " open" : ""}`}
+                style={{ transform: `scale(${showRealDes})` }}
+                darkmode={darkmode}
+                title={clickImage}
+                showRealDes={showRealDes}
+                setShowRealDes={setShowRealDes}
+            />
             <div className="switch"></div>
         </div>
     )

@@ -207,24 +207,23 @@ const [eclatSlides] = useState([
         setDisplayImage("none")
     }
     switch (title) {
+        // Plusieurs images (slider)
         case "kny":
             return (
-                <div className="realDes" style={{ transform: "scale(" + showRealDes + ")", backgroundColor: (darkmode ? "#1c1d1f" : "white"), color: (darkmode ? "white" : "black") }} >
+                <div className={`realDes${showRealDes !== "0" ? " open" : ""}`} style={{ transform: "scale(" + showRealDes + ")", backgroundColor: (darkmode ? "#1c1d1f" : "white"), color: (darkmode ? "white" : "black") }} onClick={e => e.stopPropagation()}>
                     <h2 className="title-real-des">Présentation kimetsu no yaiba</h2>
                     <div className="slider-real-des">
-                        {
-                            knySlides.map((knySlide, index) => {
-                                return <Slider ref={slider} {...settings} key={index}>
-                                    <img className="slide" src={knySlide.img} alt={knySlide.alt} onClick={(src) => ScaleImage(knySlide.img)} />
-                                </Slider>
-                            })
-                        }
+                        <Slider ref={slider} {...settings}>
+                            {knySlides.map((slide, idx) => (
+                                <img className="slide" src={slide.img} alt={slide.alt} key={idx} onClick={() => ScaleImage(slide.img)} />
+                            ))}
+                        </Slider>
                     </div>
                     <div className="real-des">
                         <p className="description">Un site de présentation de l'anime "Kimetsu no Yaiba" ou "Demon Slayer" de Koyoharu Goutouge et produit par Ufotable</p>
                     </div>
                     <div className="usage-technos">
-                        <p>Langages utilisés</p>
+                        <p className="usage-title">Langages ou technos utilisés</p>
                         <div className="technos">
                             <Languages techno={"HTML"} percentage={70} />
                             <Languages techno={"CSS"} percentage={25} />
@@ -232,7 +231,15 @@ const [eclatSlides] = useState([
                         </div>
                     </div>
                     <div className="return-real">
-                        <span className="rereal" onClick={returnReal} >Retour</span>
+                        <button
+    className="rereal"
+    onClick={returnReal}
+    aria-label="Fermer la fiche projet"
+    tabIndex={0}
+    type="button"
+>
+    Retour
+</button>
                     </div>
                     <div className="big-picture" style={{ display: displayImage }}>
                         <img src={imageClicked} alt="big" id="big-picture" onClick={ClosePicture} />
@@ -243,86 +250,98 @@ const [eclatSlides] = useState([
 
         case "pcbp":
             return (
-                <div className="realDes" style={{ transform: "scale(" + showRealDes + ")", backgroundColor: (darkmode ? "#1c1d1f" : "white"), color: (darkmode ? "white" : "black") }} >
-                    <h2 className="title-real-des">Pc buying pro</h2>
-                    <div className="slider-real-des">
-                        {
-                            pcbpSlides.map((pcbpSlide, index) => {
-                                return <Slider ref={slider} {...settings} key={index}>
-                                    <img className="slide" src={pcbpSlide.img} alt={pcbpSlide.alt} onClick={(src) => ScaleImage(pcbpSlide.img)} />
-                                </Slider>
-                            })
-                        }
-                    </div>
-                    <div className="real-des">
-                        <p className="description">Vous avez besoin dacheter un ordinateur ou des composants de tour? Rendez-vous sur Computer Buying Pro ! Vous trouverez sur ce site des composants comme carte graphique, carte mère, processeur pour personnaliser votre ordinateur. Et si vous ne savez pas où vous diriger, ne vous inquiétez pas ! Nous vendons aussi des tours déjà montées avec leurs composants! Ce site à été programmé avec le modèle MVC.</p>
-                    </div>
-                    <div className="usage-technos">
-                        <p>Langages utilisés</p>
-                        <div className="technos">
-                            <Languages techno={"PHP"} percentage={32} />
-                            <Languages techno={"HTML"} percentage={30} />
-                            <Languages techno={"CSS"} percentage={19} />
-                            <Languages techno={"SQL"} percentage={11} />
-                            <Languages techno={"JS"} percentage={8} />
-                        </div>
-                    </div>
-                    <div className="return-real">
-                        <span className="rereal" onClick={returnReal} >Retour</span>
-                    </div>
-                    <div className="big-picture" style={{ display: displayImage }}>
-                        <img src={imageClicked} alt="big" id="big-picture" onClick={ClosePicture} />
-                        <p className="cross-picture" onClick={ClosePicture}>X</p>
-                    </div>
+                <div className={`realDes${showRealDes !== "0" ? " open" : ""}`} style={{ transform: "scale(" + showRealDes + ")", backgroundColor: (darkmode ? "#1c1d1f" : "white"), color: (darkmode ? "white" : "black") }} onClick={e => e.stopPropagation()}>
+            <h2 className="title-real-des">Pc buying pro</h2>
+            <div className="slider-real-des">
+                <Slider ref={slider} {...settings}>
+                    {pcbpSlides.map((slide, idx) => (
+                        <img className="slide" src={slide.img} alt={slide.alt} key={idx} onClick={() => ScaleImage(slide.img)} />
+                    ))}
+                </Slider>
+            </div>
+            <div className="real-des">
+                <p className="description">Vous avez besoin dacheter un ordinateur ou des composants de tour? Rendez-vous sur Computer Buying Pro ! Vous trouverez sur ce site des composants comme carte graphique, carte mère, processeur pour personnaliser votre ordinateur. Et si vous ne savez pas où vous diriger, ne vous inquiétez pas ! Nous vendons aussi des tours déjà montées avec leurs composants! Ce site à été programmé avec le modèle MVC.</p>
+            </div>
+            <div className="usage-technos">
+                <p className="usage-title">Langages ou technos utilisés</p>
+                <div className="technos">
+                    <Languages techno={"PHP"} percentage={32} />
+                    <Languages techno={"HTML"} percentage={30} />
+                    <Languages techno={"CSS"} percentage={19} />
+                    <Languages techno={"SQL"} percentage={11} />
+                    <Languages techno={"JS"} percentage={8} />
                 </div>
+            </div>
+            <div className="return-real">
+                <button
+    className="rereal"
+    onClick={returnReal}
+    aria-label="Fermer la fiche projet"
+    tabIndex={0}
+    type="button"
+>
+    Retour
+</button>
+            </div>
+            <div className="big-picture" style={{ display: displayImage }}>
+                <img src={imageClicked} alt="big" id="big-picture" onClick={ClosePicture} />
+                <p className="cross-picture" onClick={ClosePicture}>X</p>
+            </div>
+        </div>
             )
         case "streamingWorld":
             return (
-                <div className="realDes" style={{ transform: "scale(" + showRealDes + ")", backgroundColor: (darkmode ? "#1c1d1f" : "white"), color: (darkmode ? "white" : "black") }} >
-                    <h2 className="title-real-des">Streaming world</h2>
-                    <div className="slider-real-des">
-                        {
-                            streamingWorldSlides.map((streamingWorldSlide, index) => {
-                                return <Slider ref={slider} {...settings} key={index}>
-                                    <img className="slide" src={streamingWorldSlide.img} alt={streamingWorldSlide.alt} onClick={(src) => ScaleImage(streamingWorldSlide.img)} />
-                                </Slider>
-                            })
-                        }
-                    </div>
-                    <div className="real-des">
-                        <p className="description">Fan de mangas et d'animes? Sur Streaming-world, retrouvez les épisodes de vos animes préférés et accédez à la boutique en ligne avec paiement sécurisé pour y voir figurines, accessoires, blu-ray et tomes disponibles ! En prime, une petite présentation du manga de votre choix à été faite dans la section artworks. N'hésitez pas ! Ce site à été programmé avec le modèle MVC. La partie artworks est un site de présentation des animes avec leur personnages principaux proposés en streaming. C'est un peu comme un deuxième site intégré dans streaming-world.</p>
-                    </div>
-                    <div className="usage-technos">
-                        <p>Langages utilisés</p>
-                        <div className="technos">
-                            <Languages techno={"HTML"} percentage={60} />
-                            <Languages techno={"CSS"} percentage={20} />
-                            <Languages techno={"PHP"} percentage={12} />
-                            <Languages techno={"SQL"} percentage={6} />
-                            <Languages techno={"JS"} percentage={2} />
-                        </div>
-                    </div>
-                    <div className="return-real">
-                        <span className="rereal" onClick={returnReal} >Retour</span>
-                    </div>
-                    <div className="big-picture" style={{ display: displayImage }}>
-                        <img src={imageClicked} alt="big" id="big-picture" onClick={ClosePicture} />
-                        <p className="cross-picture" onClick={ClosePicture}>X</p>
-                    </div>
+                <div className={`realDes${showRealDes !== "0" ? " open" : ""}`} style={{ transform: "scale(" + showRealDes + ")", backgroundColor: (darkmode ? "#1c1d1f" : "white"), color: (darkmode ? "white" : "black") }} onClick={e => e.stopPropagation()}>
+            <h2 className="title-real-des">Streaming world</h2>
+            <div className="slider-real-des">
+                <Slider ref={slider} {...settings}>
+                    {streamingWorldSlides.map((slide, idx) => (
+                        <img className="slide" src={slide.img} alt={slide.alt} key={idx} onClick={() => ScaleImage(slide.img)} />
+                    ))}
+                </Slider>
+            </div>
+            <div className="real-des">
+                <p className="description">Fan de mangas et d'animes? Sur Streaming-world, retrouvez les épisodes de vos animes préférés et accédez à la boutique en ligne avec paiement sécurisé pour y voir figurines, accessoires, blu-ray et tomes disponibles ! En prime, une petite présentation du manga de votre choix à été faite dans la section artworks. N'hésitez pas ! Ce site à été programmé avec le modèle MVC. La partie artworks est un site de présentation des animes avec leur personnages principaux proposés en streaming. C'est un peu comme un deuxième site intégré dans streaming-world.</p>
+            </div>
+            <div className="usage-technos">
+                <p className="usage-title">Langages ou technos utilisés</p>
+                <div className="technos">
+                    <Languages techno={"HTML"} percentage={60} />
+                    <Languages techno={"CSS"} percentage={20} />
+                    <Languages techno={"PHP"} percentage={12} />
+                    <Languages techno={"SQL"} percentage={6} />
+                    <Languages techno={"JS"} percentage={2} />
                 </div>
+            </div>
+            <div className="return-real">
+                <button
+    className="rereal"
+    onClick={returnReal}
+    aria-label="Fermer la fiche projet"
+    tabIndex={0}
+    type="button"
+>
+    Retour
+</button>
+            </div>
+            <div className="big-picture" style={{ display: displayImage }}>
+                <img src={imageClicked} alt="big" id="big-picture" onClick={ClosePicture} />
+                <p className="cross-picture" onClick={ClosePicture}>X</p>
+            </div>
+        </div>
             )
         case "evilHunter":
             return (
-                <div className="realDes" style={{ transform: "scale(" + showRealDes + ")", backgroundColor: (darkmode ? "#1c1d1f" : "white"), color: (darkmode ? "white" : "black") }} >
+                <div className={`realDes${showRealDes !== "0" ? " open" : ""}`} style={{ transform: "scale(" + showRealDes + ")", backgroundColor: (darkmode ? "#1c1d1f" : "white"), color: (darkmode ? "white" : "black") }} onClick={e => e.stopPropagation()}>
                     <h2 className="title-real-des">Evil hunter</h2>
                     <div className="img-real-des">
-                        <img className="slide" src={evilHunter} alt="evil hunter" onClick={(src) => ScaleImage(evilHunter)} />
+                        <img className="slide" src={evilHunter} alt="evil hunter" onClick={() => ScaleImage(evilHunter)} />
                     </div>
                     <div className="real-des">
                         <p className="description">Un mini jeu qui exploite les foncionnalités js et jquery. Menez votre personnage à la victoire en combattant des monstres la nuit pour survivre!</p>
                     </div>
                     <div className="usage-technos">
-                        <p>Langages utilisés</p>
+                        <p className="usage-title">Langages ou technos utilisés</p>
                         <div className="technos">
                             <Languages techno={"JS"} percentage={52} />
                             <Languages techno={"CSS"} percentage={31} />
@@ -330,7 +349,15 @@ const [eclatSlides] = useState([
                         </div>
                     </div>
                     <div className="return-real">
-                        <span className="rereal" onClick={returnReal} >Retour</span>
+                        <button
+    className="rereal"
+    onClick={returnReal}
+    aria-label="Fermer la fiche projet"
+    tabIndex={0}
+    type="button"
+>
+    Retour
+</button>
                     </div>
                     <div className="big-picture" style={{ display: displayImage }}>
                         <img src={imageClicked} alt="big" id="big-picture" onClick={ClosePicture} />
@@ -340,22 +367,20 @@ const [eclatSlides] = useState([
             )
         case "chat":
             return (
-                <div className="realDes" style={{ transform: "scale(" + showRealDes + ")", backgroundColor: (darkmode ? "#1c1d1f" : "white"), color: (darkmode ? "white" : "black") }} >
+                <div className={`realDes${showRealDes !== "0" ? " open" : ""}`} style={{ transform: "scale(" + showRealDes + ")", backgroundColor: (darkmode ? "#1c1d1f" : "white"), color: (darkmode ? "white" : "black") }} onClick={e => e.stopPropagation()}>
                     <h2 className="title-real-des">Tchat numérique</h2>
                     <div className="slider-real-des">
-                        {
-                            tchatSlides.map((tchatSlide, index) => {
-                                return <Slider ref={slider} {...settings} key={index}>
-                                    <img className="slide" src={tchatSlide.img} alt={tchatSlide.alt} onClick={(src) => ScaleImage(tchatSlide.img)} />
-                                </Slider>
-                            })
-                        }
+                        <Slider ref={slider} {...settings}>
+                            {tchatSlides.map((slide, idx) => (
+                                <img className="slide" src={slide.img} alt={slide.alt} key={idx} onClick={() => ScaleImage(slide.img)} />
+                            ))}
+                        </Slider>
                     </div>
                     <div className="real-des">
                         <p className="description">Un site de tchat à discussion en temps réel entre les utilisateurs. Un espace d'offres d'emploi est disponible pour les demandeurs d'emploi. Ce site à été programmé en PHP orienté objet et en utilisant des API.</p>
                     </div>
                     <div className="usage-technos">
-                        <p>Langages utilisés</p>
+                        <p className="usage-title">Langages ou technos utilisés</p>
                         <div className="technos">
                             <Languages techno={"PHP"} percentage={33} />
                             <Languages techno={"HTML"} percentage={29} />
@@ -365,7 +390,15 @@ const [eclatSlides] = useState([
                         </div>
                     </div>
                     <div className="return-real">
-                        <span className="rereal" onClick={returnReal} >Retour</span>
+                        <button
+    className="rereal"
+    onClick={returnReal}
+    aria-label="Fermer la fiche projet"
+    tabIndex={0}
+    type="button"
+>
+    Retour
+</button>
                     </div>
                     <div className="big-picture" style={{ display: displayImage }}>
                         <img src={imageClicked} alt="big" id="big-picture" onClick={ClosePicture} />
@@ -375,16 +408,16 @@ const [eclatSlides] = useState([
             )
         case "pacman":
             return (
-                <div className="realDes" style={{ transform: "scale(" + showRealDes + ")", backgroundColor: (darkmode ? "#1c1d1f" : "white"), color: (darkmode ? "white" : "black") }} >
+                <div className={`realDes${showRealDes !== "0" ? " open" : ""}`} style={{ transform: "scale(" + showRealDes + ")", backgroundColor: (darkmode ? "#1c1d1f" : "white"), color: (darkmode ? "white" : "black") }} onClick={e => e.stopPropagation()}>
                     <h2 className="title-real-des">Pacman race</h2>
                     <div className="img-real-des">
-                        <img className="slide" src={pacman} alt="pacman" onClick={(src) => ScaleImage(pacman)} />
+                        <img className="slide" src={pacman} alt="pacman" onClick={() => ScaleImage(pacman)} />
                     </div>
                     <div className="real-des">
                         <p className="description">Un mini jeu Pacman réalisé en JS : qui de vous ou du Pacman adverse mangera le plus de fruits en premier ?</p>
                     </div>
                     <div className="usage-technos">
-                        <p>Langages utilisés</p>
+                        <p className="usage-title">Langages ou technos utilisés</p>
                         <div className="technos">
                             <Languages techno={"JS"} percentage={97} />
                             <Languages techno={"HTML"} percentage={1.5} />
@@ -392,7 +425,15 @@ const [eclatSlides] = useState([
                         </div>
                     </div>
                     <div className="return-real">
-                        <span className="rereal" onClick={returnReal} >Retour</span>
+                        <button
+    className="rereal"
+    onClick={returnReal}
+    aria-label="Fermer la fiche projet"
+    tabIndex={0}
+    type="button"
+>
+    Retour
+</button>
                     </div>
                     <div className="big-picture" style={{ display: displayImage }}>
                         <img src={imageClicked} alt="big" id="big-picture" onClick={ClosePicture} />
@@ -402,7 +443,7 @@ const [eclatSlides] = useState([
             )
         case "card":
             return (
-                <div className="realDes" style={{ transform: "scale(" + showRealDes + ")", backgroundColor: (darkmode ? "#1c1d1f" : "white"), color: (darkmode ? "white" : "black") }} >
+                <div className={`realDes${showRealDes !== "0" ? " open" : ""}`} style={{ transform: "scale(" + showRealDes + ")", backgroundColor: (darkmode ? "#1c1d1f" : "white"), color: (darkmode ? "white" : "black") }} onClick={e => e.stopPropagation()}>
                     <h2 className="title-real-des">Animation carte de paiement</h2>
                     <div className="slider-real-des">
                         <video autoPlay loop muted>
@@ -413,7 +454,7 @@ const [eclatSlides] = useState([
                         <p className="description">Une simple animation de carte de paiement pour un visuel plus attrayant !</p>
                     </div>
                     <div className="usage-technos">
-                        <p>Langages utilisés</p>
+                        <p className="usage-title">Langages ou technos utilisés</p>
                         <div className="technos">
                             <Languages techno={"HTML"} percentage={40} />
                             <Languages techno={"CSS"} percentage={30} />
@@ -421,7 +462,15 @@ const [eclatSlides] = useState([
                         </div>
                     </div>
                     <div className="return-real">
-                        <span className="rereal" onClick={returnReal} >Retour</span>
+                        <button
+    className="rereal"
+    onClick={returnReal}
+    aria-label="Fermer la fiche projet"
+    tabIndex={0}
+    type="button"
+>
+    Retour
+</button>
                     </div>
                     <div className="big-picture" style={{ display: displayImage }}>
                         <img src={imageClicked} alt="big" id="big-picture" onClick={ClosePicture} />
@@ -431,16 +480,16 @@ const [eclatSlides] = useState([
             )
         case "pegasus":
             return (
-                <div className="realDes" style={{ transform: "scale(" + showRealDes + ")", backgroundColor: (darkmode ? "#1c1d1f" : "white"), color: (darkmode ? "white" : "black") }} >
+                <div className={`realDes${showRealDes !== "0" ? " open" : ""}`} style={{ transform: "scale(" + showRealDes + ")", backgroundColor: (darkmode ? "#1c1d1f" : "white"), color: (darkmode ? "white" : "black") }} onClick={e => e.stopPropagation()}>
                     <h2 className="title-real-des">Vente de voitures</h2>
                     <div className="img-real-des">
-                        <img className="slide" src={pegasus} alt="pegasus" onClick={(src) => ScaleImage(pegasus)} />
+                        <img className="slide" src={pegasus} alt="pegasus" onClick={() => ScaleImage(pegasus)} />
                     </div>
                     <div className="real-des">
                         <p className="description">Frontend d'un site de vente de voitures.</p>
                     </div>
                     <div className="usage-technos">
-                        <p>Langages utilisés</p>
+                        <p className="usage-title">Langages ou technos utilisés</p>
                         <div className="technos">
                             <Languages techno={"HTML"} percentage={50} />
                             <Languages techno={"CSS"} percentage={35} />
@@ -448,7 +497,15 @@ const [eclatSlides] = useState([
                         </div>
                     </div>
                     <div className="return-real">
-                        <span className="rereal" onClick={returnReal} >Retour</span>
+                        <button
+    className="rereal"
+    onClick={returnReal}
+    aria-label="Fermer la fiche projet"
+    tabIndex={0}
+    type="button"
+>
+    Retour
+</button>
                     </div>
                     <div className="big-picture" style={{ display: displayImage }}>
                         <img src={imageClicked} alt="big" id="big-picture" onClick={ClosePicture} />
@@ -458,49 +515,55 @@ const [eclatSlides] = useState([
             )
         case "tasbeeh":
             return (
-                <div className="realDes" style={{ transform: "scale(" + showRealDes + ")", backgroundColor: (darkmode ? "#1c1d1f" : "white"), color: (darkmode ? "white" : "black") }} >
-                    <h2 className="title-real-des">Tasbeeh</h2>
-                    <div className="slider-real-des">
-                        {
-                            tasbeehSlides.map((tasbeehSlide, index) => {
-                                return <Slider ref={slider} {...settings} key={index}>
-                                    <img className="slide" src={tasbeehSlide.img} alt={tasbeehSlide.alt} onClick={(src) => ScaleImage(tasbeehSlide.img)} />
-                                </Slider>
-                            })
-                        }
-                    </div>
-                    <div className="real-des">
-                        <p className="description">Application utilisant une API de Quran pour lire, écouter ou faire des évocations.</p>
-                    </div>
-                    <div className="usage-technos">
-                        <p>Langages utilisés</p>
-                        <div className="technos">
-                            <Languages techno={"HTML"} percentage={66} />
-                            <Languages techno={"CSS"} percentage={24} />
-                            <Languages techno={"JS"} percentage={10} />
-                        </div>
-                    </div>
-                    <div className="return-real">
-                        <span className="rereal" onClick={returnReal} >Retour</span>
-                    </div>
-                    <div className="big-picture" style={{ display: displayImage }}>
-                        <img src={imageClicked} alt="big" id="big-picture" onClick={ClosePicture} />
-                        <p className="cross-picture" onClick={ClosePicture}>X</p>
-                    </div>
+                <div className={`realDes${showRealDes !== "0" ? " open" : ""}`} style={{ transform: "scale(" + showRealDes + ")", backgroundColor: (darkmode ? "#1c1d1f" : "white"), color: (darkmode ? "white" : "black") }} onClick={e => e.stopPropagation()}>
+            <h2 className="title-real-des">Tasbeeh</h2>
+            <div className="slider-real-des">
+                <Slider ref={slider} {...settings}>
+                    {tasbeehSlides.map((slide, idx) => (
+                        <img className="slide" src={slide.img} alt={slide.alt} key={idx} onClick={() => ScaleImage(slide.img)} />
+                    ))}
+                </Slider>
+            </div>
+            <div className="real-des">
+                <p className="description">Application utilisant une API de Quran pour lire, écouter ou faire des évocations.</p>
+            </div>
+            <div className="usage-technos">
+                <p className="usage-title">Langages ou technos utilisés</p>
+                <div className="technos">
+                    <Languages techno={"HTML"} percentage={66} />
+                    <Languages techno={"CSS"} percentage={24} />
+                    <Languages techno={"JS"} percentage={10} />
                 </div>
+            </div>
+            <div className="return-real">
+                <button
+    className="rereal"
+    onClick={returnReal}
+    aria-label="Fermer la fiche projet"
+    tabIndex={0}
+    type="button"
+>
+    Retour
+</button>
+            </div>
+            <div className="big-picture" style={{ display: displayImage }}>
+                <img src={imageClicked} alt="big" id="big-picture" onClick={ClosePicture} />
+                <p className="cross-picture" onClick={ClosePicture}>X</p>
+            </div>
+        </div>
             )
         case "formateur":
             return (
-                <div className="realDes" style={{ transform: "scale(" + showRealDes + ")", backgroundColor: (darkmode ? "#1c1d1f" : "white"), color: (darkmode ? "white" : "black") }} >
+                <div className={`realDes${showRealDes !== "0" ? " open" : ""}`} style={{ transform: "scale(" + showRealDes + ")", backgroundColor: (darkmode ? "#1c1d1f" : "white"), color: (darkmode ? "white" : "black") }} onClick={e => e.stopPropagation()}>
                     <h2 className="title-real-des">Liste de formateurs</h2>
                     <div className="img-real-des">
-                        <img className="slide" src={formateur} alt="formateur" onClick={(src) => ScaleImage(formateur)} />
+                        <img className="slide" src={formateur} alt="formateur" onClick={() => ScaleImage(formateur)} />
                     </div>
                     <div className="real-des">
                         <p className="description">Page d'import d'un fichier excel de formateurs, le tout traité en base de données pour pouvoir intéragir avec les données.</p>
                     </div>
                     <div className="usage-technos">
-                        <p>Langages utilisés</p>
+                        <p className="usage-title">Langages ou technos utilisés</p>
                         <div className="technos">
                             <Languages techno={"JS"} percentage={35} />
                             <Languages techno={"HTML"} percentage={30} />
@@ -510,7 +573,15 @@ const [eclatSlides] = useState([
                         </div>
                     </div>
                     <div className="return-real">
-                        <span className="rereal" onClick={returnReal} >Retour</span>
+                        <button
+    className="rereal"
+    onClick={returnReal}
+    aria-label="Fermer la fiche projet"
+    tabIndex={0}
+    type="button"
+>
+    Retour
+</button>
                     </div>
                     <div className="big-picture" style={{ display: displayImage }}>
                         <img src={imageClicked} alt="big" id="big-picture" onClick={ClosePicture} />
@@ -520,16 +591,16 @@ const [eclatSlides] = useState([
             )
         case "myStockage":
             return (
-                <div className="realDes" style={{ transform: "scale(" + showRealDes + ")", backgroundColor: (darkmode ? "#1c1d1f" : "white"), color: (darkmode ? "white" : "black") }} >
+                <div className={`realDes${showRealDes !== "0" ? " open" : ""}`} style={{ transform: "scale(" + showRealDes + ")", backgroundColor: (darkmode ? "#1c1d1f" : "white"), color: (darkmode ? "white" : "black") }} onClick={e => e.stopPropagation()}>
                     <h2 className="title-real-des">myStockage</h2>
-                    <div className="slider-real-des"><div className="img-real-des">
-                        <img className="slide" src={myStockage} alt="stockage" onClick={(src) => ScaleImage(myStockage)} />
-                    </div></div>
+                    <div className="img-real-des">
+                        <img className="slide" src={myStockage} alt="stockage" onClick={() => ScaleImage(myStockage)} />
+                    </div>
                     <div className="real-des">
                         <p className="description">Page de vérification d'état de sites (en ligne, stockage en base de données, stockage ftp).</p>
                     </div>
                     <div className="usage-technos">
-                        <p>Langages utilisés</p>
+                        <p className="usage-title">Langages ou technos utilisés</p>
                         <div className="technos">
                             <Languages techno={"PHP"} percentage={47} />
                             <Languages techno={"HTML"} percentage={26} />
@@ -538,7 +609,15 @@ const [eclatSlides] = useState([
                         </div>
                     </div>
                     <div className="return-real">
-                        <span className="rereal" onClick={returnReal} >Retour</span>
+                        <button
+    className="rereal"
+    onClick={returnReal}
+    aria-label="Fermer la fiche projet"
+    tabIndex={0}
+    type="button"
+>
+    Retour
+</button>
                     </div>
                     <div className="big-picture" style={{ display: displayImage }}>
                         <img src={imageClicked} alt="big" id="big-picture" onClick={ClosePicture} />
@@ -548,48 +627,54 @@ const [eclatSlides] = useState([
             )
         case "monades":
             return (
-                <div className="realDes" style={{ transform: "scale(" + showRealDes + ")", backgroundColor: (darkmode ? "#1c1d1f" : "white"), color: (darkmode ? "white" : "black") }} >
-                    <h2 className="title-real-des">Présentation entreprise</h2>
-                    <div className="slider-real-des">
-                        {
-                            monadesSlides.map((monadesSlide, index) => {
-                                return <Slider ref={slider} {...settings} key={index}>
-                                    <img className="slide" src={monadesSlide.img} alt={monadesSlide.alt} onClick={(src) => ScaleImage(monadesSlide.img)} />
-                                </Slider>
-                            })
-                        }
-                    </div>
-                    <div className="real-des">
-                        <p className="description">Un site de présentation d'entreprise fait avec React</p>
-                    </div>
-                    <div className="usage-technos">
-                        <p>Langages utilisés</p>
-                        <div className="technos">
-                            <Languages techno={"REACT"} percentage={80} />
-                            <Languages techno={"NODEJS"} percentage={20} />
-                        </div>
-                    </div>
-                    <div className="return-real">
-                        <span className="rereal" onClick={returnReal} >Retour</span>
-                    </div>
-                    <div className="big-picture" style={{ display: displayImage }}>
-                        <img src={imageClicked} alt="big" id="big-picture" onClick={ClosePicture} />
-                        <p className="cross-picture" onClick={ClosePicture}>X</p>
-                    </div>
+                <div className={`realDes${showRealDes !== "0" ? " open" : ""}`} style={{ transform: "scale(" + showRealDes + ")", backgroundColor: (darkmode ? "#1c1d1f" : "white"), color: (darkmode ? "white" : "black") }} onClick={e => e.stopPropagation()}>
+            <h2 className="title-real-des">Présentation entreprise</h2>
+            <div className="slider-real-des">
+                <Slider ref={slider} {...settings}>
+                    {monadesSlides.map((slide, idx) => (
+                        <img className="slide" src={slide.img} alt={slide.alt} key={idx} onClick={() => ScaleImage(slide.img)} />
+                    ))}
+                </Slider>
+            </div>
+            <div className="real-des">
+                <p className="description">Un site de présentation d'entreprise fait avec React</p>
+            </div>
+            <div className="usage-technos">
+                <p className="usage-title">Langages ou technos utilisés</p>
+                <div className="technos">
+                    <Languages techno={"REACT"} percentage={80} />
+                    <Languages techno={"NODEJS"} percentage={20} />
                 </div>
+            </div>
+            <div className="return-real">
+                <button
+    className="rereal"
+    onClick={returnReal}
+    aria-label="Fermer la fiche projet"
+    tabIndex={0}
+    type="button"
+>
+    Retour
+</button>
+            </div>
+            <div className="big-picture" style={{ display: displayImage }}>
+                <img src={imageClicked} alt="big" id="big-picture" onClick={ClosePicture} />
+                <p className="cross-picture" onClick={ClosePicture}>X</p>
+            </div>
+        </div>
             )
         case "ps3Ui":
             return (
-                <div className="realDes" style={{ transform: "scale(" + showRealDes + ")", backgroundColor: (darkmode ? "#1c1d1f" : "white"), color: (darkmode ? "white" : "black") }} >
+                <div className={`realDes${showRealDes !== "0" ? " open" : ""}`} style={{ transform: "scale(" + showRealDes + ")", backgroundColor: (darkmode ? "#1c1d1f" : "white"), color: (darkmode ? "white" : "black") }} onClick={e => e.stopPropagation()}>
                     <h2 className="title-real-des">Playstation 3 UI</h2>
-                    <div className="slider-real-des"><div className="img-real-des">
-                        <img className="slide" src={ps3Ui} alt="stockage" onClick={(src) => ScaleImage(ps3Ui)} />
-                    </div></div>
+                    <div className="img-real-des">
+                        <img className="slide" src={ps3Ui} alt="ps3 ui" onClick={() => ScaleImage(ps3Ui)} />
+                    </div>
                     <div className="real-des">
                         <p className="description">Reproduction de la navigation de la console playstation 3.</p>
                     </div>
                     <div className="usage-technos">
-                        <p>Langages utilisés</p>
+                        <p className="usage-title">Langages ou technos utilisés</p>
                         <div className="technos">
                             <Languages techno={"HTML"} percentage={50} />
                             <Languages techno={"CSS"} percentage={15} />
@@ -597,7 +682,15 @@ const [eclatSlides] = useState([
                         </div>
                     </div>
                     <div className="return-real">
-                        <span className="rereal" onClick={returnReal} >Retour</span>
+                        <button
+    className="rereal"
+    onClick={returnReal}
+    aria-label="Fermer la fiche projet"
+    tabIndex={0}
+    type="button"
+>
+    Retour
+</button>
                     </div>
                     <div className="big-picture" style={{ display: displayImage }}>
                         <img src={imageClicked} alt="big" id="big-picture" onClick={ClosePicture} />
@@ -607,73 +700,85 @@ const [eclatSlides] = useState([
             )
         case "evasion":
             return (
-                <div className="realDes" style={{ transform: "scale(" + showRealDes + ")", backgroundColor: (darkmode ? "#1c1d1f" : "white"), color: (darkmode ? "white" : "black") }} >
-                    <h2 className="title-real-des">Présentation entreprise</h2>
-                    <div className="slider-real-des">
-                        {
-                            evasionSlides.map((evasionSlide, index) => {
-                                return <Slider ref={slider} {...settings} key={index}>
-                                    <img className="slide" src={evasionSlide.img} alt={evasionSlide.alt} onClick={(src) => ScaleImage(evasionSlide.img)} />
-                                </Slider>
-                            })
-                        }
-                    </div>
-                    <div className="real-des">
-                        <p className="description">Projet "EVASION" du département des Hauts-de-Seine : Création et gestion du site <a target='__blank'>"https://evasion.hauts-de-seine.fr"</a> regroupant plusieurs contenus VR accessibles sur tablette ainsi que la création de son propre contenu VR !</p>
-                    </div>
-                    <div className="usage-technos">
-                        <p>Langages utilisés</p>
-                        <div className="technos">
-                            <Languages techno={"REACT"} percentage={60} />
-                            <Languages techno={"SYMFONY"} percentage={30} />
-                            <Languages techno={"FFMPEG"} percentage={8} />
-                            <Languages techno={"STORYBOOK"} percentage={2} />
-                        </div>
-                    </div>
-                    <div className="return-real">
-                        <span className="rereal" onClick={returnReal} >Retour</span>
-                    </div>
-                    <div className="big-picture" style={{ display: displayImage }}>
-                        <img src={imageClicked} alt="big" id="big-picture" onClick={ClosePicture} />
-                        <p className="cross-picture" onClick={ClosePicture}>X</p>
-                    </div>
+                <div className={`realDes${showRealDes !== "0" ? " open" : ""}`} style={{ transform: "scale(" + showRealDes + ")", backgroundColor: (darkmode ? "#1c1d1f" : "white"), color: (darkmode ? "white" : "black") }} onClick={e => e.stopPropagation()}>
+            <h2 className="title-real-des">Présentation entreprise</h2>
+            <div className="slider-real-des">
+                <Slider ref={slider} {...settings}>
+                    {evasionSlides.map((slide, idx) => (
+                        <img className="slide" src={slide.img} alt={slide.alt} key={idx} onClick={() => ScaleImage(slide.img)} />
+                    ))}
+                </Slider>
+            </div>
+            <div className="real-des">
+                <p className="description">Projet "EVASION" du département des Hauts-de-Seine : Création et gestion du site regroupant plusieurs contenus VR accessibles sur tablette ainsi que la création de son propre contenu VR !</p>
+            </div>
+            <div className="usage-technos">
+                <p className="usage-title">Langages ou technos utilisés</p>
+                <div className="technos">
+                    <Languages techno={"REACT"} percentage={60} />
+                    <Languages techno={"SYMFONY"} percentage={30} />
+                    <Languages techno={"FFMPEG"} percentage={8} />
+                    <Languages techno={"STORYBOOK"} percentage={2} />
                 </div>
+            </div>
+            <div className="return-real">
+                <button
+    className="rereal"
+    onClick={returnReal}
+    aria-label="Fermer la fiche projet"
+    tabIndex={0}
+    type="button"
+>
+    Retour
+</button>
+            </div>
+            <div className="big-picture" style={{ display: displayImage }}>
+                <img src={imageClicked} alt="big" id="big-picture" onClick={ClosePicture} />
+                <p className="cross-picture" onClick={ClosePicture}>X</p>
+            </div>
+        </div>
             )
         case "linked":
             return (
-                <div className="realDes" style={{ transform: "scale(" + showRealDes + ")", backgroundColor: (darkmode ? "#1c1d1f" : "white"), color: (darkmode ? "white" : "black") }} >
-                    <h2 className="title-real-des">Présentation entreprise</h2>
-                    <div className="slider-real-des">
-                        {
-                            linkedSlides.map((linkedSlide, index) => {
-                                return <Slider ref={slider} {...settings} key={index}>
-                                    <img className="slide" src={linkedSlide.img} alt={linkedSlide.alt} onClick={(src) => ScaleImage(linkedSlide.img)} />
-                                </Slider>
-                            })
-                        }
-                    </div>
-                    <div className="real-des">
-                        <p className="description">Application permettant de se mettre à jour sur les horaires de prières de la mosquée et d'être au courant des nouvelles actualités !</p>
-                    </div>
-                    <div className="usage-technos">
-                        <p>Langages utilisés</p>
-                        <div className="technos">
-                            <Languages techno={"REACT NATIVE"} percentage={80} />
-                            <Languages techno={"PHP"} percentage={20} />
-                        </div>
-                    </div>
-                    <div className="return-real">
-                        <span className="rereal" onClick={returnReal} >Retour</span>
-                    </div>
-                    <div className="big-picture" style={{ display: displayImage }}>
-                        <img src={imageClicked} alt="big" id="big-picture" onClick={ClosePicture} />
-                        <p className="cross-picture" onClick={ClosePicture}>X</p>
-                    </div>
+                <div className={`realDes${showRealDes !== "0" ? " open" : ""}`} style={{ transform: "scale(" + showRealDes + ")", backgroundColor: (darkmode ? "#1c1d1f" : "white"), color: (darkmode ? "white" : "black") }} onClick={e => e.stopPropagation()}>
+            <h2 className="title-real-des">Présentation entreprise</h2>
+            <div className="slider-real-des">
+                <Slider ref={slider} {...settings}>
+                    {linkedSlides.map((slide, idx) => (
+                        <img className="slide" src={slide.img} alt={slide.alt} key={idx} onClick={() => ScaleImage(slide.img)} />
+                    ))}
+                </Slider>
+            </div>
+            <div className="real-des">
+                <p className="description">Application permettant de se mettre à jour sur les horaires de prières de la mosquée et d'être au courant des nouvelles actualités !</p>
+            </div>
+            <div className="usage-technos">
+                <p className="usage-title">Langages ou technos utilisés</p>
+                <div className="technos">
+                    <Languages techno={"REACT NATIVE"} percentage={80} />
+                    <Languages techno={"PHP"} percentage={20} />
                 </div>
+            </div>
+            <div className="return-real">
+                <button
+    className="rereal"
+    onClick={returnReal}
+    aria-label="Fermer la fiche projet"
+    tabIndex={0}
+    type="button"
+>
+    Retour
+</button>
+            </div>
+            <div className="big-picture" style={{ display: displayImage }}>
+                <img src={imageClicked} alt="big" id="big-picture" onClick={ClosePicture} />
+                <p className="cross-picture" onClick={ClosePicture}>X</p>
+            </div>
+        </div>
             )
         case "todoreaction":
             return (
-                <div className="realDes" style={{ transform: "scale(" + showRealDes + ")", backgroundColor: (darkmode ? "#1c1d1f" : "white"), color: (darkmode ? "white" : "black") }} >
+                <div className={`realDes${showRealDes !== "0" ? " open" : ""}`} style={{ transform: "scale(" + showRealDes + ")", backgroundColor: (darkmode ? "#1c1d1f" : "white"), color: (darkmode ? "white" : "black") }} onClick={e => e.stopPropagation()}>
                     <h2 className="title-real-des">ToDo'Réac'tion</h2>
                     <div className="slider-real-des">
                         <Slider ref={slider} {...settings}>
@@ -696,7 +801,7 @@ const [eclatSlides] = useState([
                         </p>
                     </div>
                     <div className="usage-technos">
-                        <p>Technos utilisées</p>
+                        <p className="usage-title">Langages ou technos utilisés</p>
                         <div className="technos">
                             <Languages techno={"EXPO"} percentage={40} />
                             <Languages techno={"REACT NATIVE"} percentage={30} />
@@ -705,7 +810,15 @@ const [eclatSlides] = useState([
                         </div>
                     </div>
                     <div className="return-real">
-                        <span className="rereal" onClick={returnReal} >Retour</span>
+                        <button
+    className="rereal"
+    onClick={returnReal}
+    aria-label="Fermer la fiche projet"
+    tabIndex={0}
+    type="button"
+>
+    Retour
+</button>
                     </div>
                     <div className="big-picture" style={{ display: displayImage }}>
                         <img src={imageClicked} alt="big" id="big-picture" onClick={ClosePicture} />
@@ -715,7 +828,7 @@ const [eclatSlides] = useState([
             )
         case "gachanote":
             return (
-                <div className="realDes" style={{ transform: "scale(" + showRealDes + ")", backgroundColor: (darkmode ? "#1c1d1f" : "white"), color: (darkmode ? "white" : "black") }} >
+                <div className={`realDes${showRealDes !== "0" ? " open" : ""}`} style={{ transform: "scale(" + showRealDes + ")", backgroundColor: (darkmode ? "#1c1d1f" : "white"), color: (darkmode ? "white" : "black") }} onClick={e => e.stopPropagation()}>
                     <h2 className="title-real-des">GachaNote</h2>
                     <div className="slider-real-des">
                         <Slider ref={slider} {...settings}>
@@ -736,7 +849,7 @@ const [eclatSlides] = useState([
                         </p>
                     </div>
                     <div className="usage-technos">
-                        <p>Technos utilisées</p>
+                        <p className="usage-title">Langages ou technos utilisés</p>
                         <div className="technos">
                             <Languages techno={"EXPO"} percentage={40} />
                             <Languages techno={"REACT NATIVE"} percentage={30} />
@@ -745,7 +858,15 @@ const [eclatSlides] = useState([
                         </div>
                     </div>
                     <div className="return-real">
-                        <span className="rereal" onClick={returnReal} >Retour</span>
+                        <button
+    className="rereal"
+    onClick={returnReal}
+    aria-label="Fermer la fiche projet"
+    tabIndex={0}
+    type="button"
+>
+    Retour
+</button>
                     </div>
                     <div className="big-picture" style={{ display: displayImage }}>
                         <img src={imageClicked} alt="big" id="big-picture" onClick={ClosePicture} />
@@ -755,7 +876,7 @@ const [eclatSlides] = useState([
             )
         case "jiamini":
             return (
-                <div className="realDes" style={{ transform: "scale(" + showRealDes + ")", backgroundColor: (darkmode ? "#1c1d1f" : "white"), color: (darkmode ? "white" : "black") }} >
+                <div className={`realDes${showRealDes !== "0" ? " open" : ""}`} style={{ transform: "scale(" + showRealDes + ")", backgroundColor: (darkmode ? "#1c1d1f" : "white"), color: (darkmode ? "white" : "black") }} onClick={e => e.stopPropagation()}>
                     <h2 className="title-real-des">Jiamini</h2>
                     <div className="slider-real-des">
                         <Slider ref={slider} {...settings}>
@@ -771,7 +892,7 @@ const [eclatSlides] = useState([
                         </p>
                     </div>
                     <div className="usage-technos">
-                        <p>Technos utilisées</p>
+                        <p className="usage-title">Langages ou technos utilisés</p>
                         <div className="technos">
                             <Languages techno={"EXPO"} percentage={40} />
                             <Languages techno={"JAVA (BACK)"} percentage={30} />
@@ -780,7 +901,15 @@ const [eclatSlides] = useState([
                         </div>
                     </div>
                     <div className="return-real">
-                        <span className="rereal" onClick={returnReal} >Retour</span>
+                        <button
+    className="rereal"
+    onClick={returnReal}
+    aria-label="Fermer la fiche projet"
+    tabIndex={0}
+    type="button"
+>
+    Retour
+</button>
                     </div>
                     <div className="big-picture" style={{ display: displayImage }}>
                         <img src={imageClicked} alt="big" id="big-picture" onClick={ClosePicture} />
@@ -790,7 +919,7 @@ const [eclatSlides] = useState([
             )
         case "eclat":
             return (
-                <div className="realDes" style={{ transform: "scale(" + showRealDes + ")", backgroundColor: (darkmode ? "#1c1d1f" : "white"), color: (darkmode ? "white" : "black") }} >
+                <div className={`realDes${showRealDes !== "0" ? " open" : ""}`} style={{ transform: "scale(" + showRealDes + ")", backgroundColor: (darkmode ? "#1c1d1f" : "white"), color: (darkmode ? "white" : "black") }} onClick={e => e.stopPropagation()}>
                     <h2 className="title-real-des">Éclat Solidaire</h2>
                     <div className="slider-real-des">
                         <Slider ref={slider} {...settings}>
@@ -806,7 +935,7 @@ const [eclatSlides] = useState([
                         </p>
                     </div>
                     <div className="usage-technos">
-                        <p>Langages utilisés</p>
+                        <p className="usage-title">Langages ou technos utilisés</p>
                         <div className="technos">
                             <Languages techno={"REACT"} percentage={50} />
                             <Languages techno={"NODEJS"} percentage={30} />
@@ -814,7 +943,15 @@ const [eclatSlides] = useState([
                         </div>
                     </div>
                     <div className="return-real">
-                        <span className="rereal" onClick={returnReal} >Retour</span>
+                        <button
+    className="rereal"
+    onClick={returnReal}
+    aria-label="Fermer la fiche projet"
+    tabIndex={0}
+    type="button"
+>
+    Retour
+</button>
                     </div>
                     <div className="big-picture" style={{ display: displayImage }}>
                         <img src={imageClicked} alt="big" id="big-picture" onClick={ClosePicture} />
