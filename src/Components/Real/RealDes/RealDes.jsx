@@ -84,7 +84,10 @@ const RealDes = ({ darkmode, showRealDes, setShowRealDes, title }) => {
                 </div>
             )}
             <div className="real-des">
-                <p className="description">{project.description}</p>
+                {Array.isArray(project.description)
+                    ? project.description.map((line, i) => <p className="description" key={i}>{line}</p>)
+                    : <p className="description">{project.description}</p>
+                }
             </div>
             <div className="usage-technos">
                 <p className="usage-title">Langages ou technos utilisés</p>
