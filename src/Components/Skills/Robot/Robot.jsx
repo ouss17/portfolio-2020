@@ -20,6 +20,13 @@ import illustrator from '../../../Images/logos/illustrator.png'
 import integromat from '../../../Images/logos/integromat.png'
 import photoshop from '../../../Images/logos/photoshop.jpg'
 import premiere from '../../../Images/logos/premiere.jpg'
+import canva from '../../../Images/logos/canva.png'
+import figma from '../../../Images/logos/figma.png'
+import java from '../../../Images/logos/java.jpg'
+import postgresql from '../../../Images/logos/postgresql.png'
+import springBoot from '../../../Images/logos/spring-boot.png'
+import docker from '../../../Images/logos/docker.png'
+import ddd from '../../../Images/logos/ddd.png'
 
 // defaults.maintainAspectRatio = false;
 
@@ -239,8 +246,16 @@ const Robot = () => {
                         ReactJS
                     </li>
                     <li>
+                        <img src={springBoot} alt="logo" />
+                        Spring Boot
+                    </li>
+                    <li>
                         <img src={symfony} alt="logo" />
                         Symfony
+                    </li>
+                    <li>
+                        <img src={nodejs} alt="logo" />
+                        NodeJS
                     </li>
                     <li>
                         <img src={api} alt="logo" />
@@ -251,14 +266,17 @@ const Robot = () => {
                         Jquery
                     </li>
                     <li>
+                        <img src={docker} alt="logo" />
+                        Docker
+                    </li>
+                    <li>
                         <img src={mvc} alt="logo" />
                         MVC
                     </li>
                     <li>
-                        <img src={nodejs} alt="logo" />
-                        NodeJS
+                        <img src={ddd} alt="logo" />
+                        Domain Driven Design
                     </li>
-                    <li>AJAX</li>
                     <li>
                         <img src={wordpress} alt="logo" />
                         Wordpress
@@ -290,8 +308,16 @@ const Robot = () => {
                         PHP
                     </li>
                     <li>
+                        <img src={java} alt="logo" />
+                        Java
+                    </li>
+                    <li>
                         <img src={mysql} alt="logo" />
                         MYSQL
+                    </li>
+                    <li>
+                        <img src={postgresql} alt="logo" />
+                        PostgreSQL
                     </li>
                 </ul>
             </div>
@@ -299,6 +325,14 @@ const Robot = () => {
                 <span className="cross" onClick={closeDesign}>X</span>
                 <h3 className="title-fiche">Design</h3>
                 <ul className="list-fiche">
+                    <li>
+                        <img src={canva} alt="logo" />
+                        Canva
+                    </li>
+                    <li>
+                        <img src={figma} alt="logo" />
+                        Figma
+                    </li>
                     <li>
                         <img src={photoshop} alt="logo" />
                         Photoshop
