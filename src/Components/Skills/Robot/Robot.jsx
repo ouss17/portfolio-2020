@@ -151,7 +151,11 @@ const Robot = () => {
                             <polygon className="right-noeud" points="285,195 315,195 322,207 310,220" rx="17.5" ry="17.5"
                                 fill="rgb(49,189,107)" stroke="rgb(49,189,107)" strokeWidth="19" strokeLinejoin="round">
                             </polygon>
-                            <path className="click-noeud" d="M247,185 a10,10 0 0,0 40,0" fill="rgb(49,189,107)" stroke="none" strokeWidth="1" onClick={ShowDesign}>
+                            <path className="click-noeud" d="M247,185 a10,10 0 0,0 40,0" fill="rgb(49,189,107)" stroke="none" strokeWidth="1" onClick={ShowDesign}
+                                tabIndex={0}
+                                aria-label="Voir les outils design"
+                                onKeyDown={e => { if (e.key === "Enter" || e.key === " ") ShowDesign(); }}
+                            >
                                 <animate id="noeudred" attributeName="fill" from="rgb(49,189,107)" to="red" dur="500ms" begin="0ms;noeudgreen.end" />
                                 <animate id="noeudgreen" attributeName="fill" from="red" to="rgb(49,189,107)" dur="500ms" begin="noeudred.end" />
                             </path>
@@ -209,7 +213,11 @@ const Robot = () => {
                                     <animate id="rect-circle-mini2" attributeName="cy" from="20" to="110" dur="1s" begin="indefinite" />
                                 </circle>
                             </g>
-                            <rect className="click-antenna" width="40" height="30" x="248" y="60" fill="rgb(197,213,215)" stroke="none" strokeWidth="1" onClick={ShowTechnos} >
+                            <rect className="click-antenna" width="40" height="30" x="248" y="60" fill="rgb(197,213,215)" stroke="none" strokeWidth="1" onClick={ShowTechnos}
+                                tabIndex={0}
+                                aria-label="Voir les frameworks et technos"
+                                onKeyDown={e => { if (e.key === "Enter" || e.key === " ") ShowTechnos(); }}
+                            >
                                 <animate id="animUpper" attributeName="fill" from="rgb(197,213,215)" to="red" dur="500ms"
                                     begin="0ms;animUpper2.end" />
                                 <animate id="animUpper2" attributeName="fill" from="red" to="rgb(197,213,215)" dur="500ms"
@@ -225,12 +233,11 @@ const Robot = () => {
                                 <ellipse className="eye" cx="325" cy="120" rx="7"
                                     ry="15" fill="rgb(255,255,255)" stroke="none" strokeWidth="1" />
                                 <polygon className="mouth" points="250,130 290,130 285,150 255,150" rx="17.5" ry="17.5" fill="red" stroke="red"
-                                    strokeWidth="3" strokeLinejoin="round" onClick={ShowLangages}>
-                                    <animate id="anim1" attributeName="fill" from="rgb(21,52,66)" to="red" dur="500ms"
-                                        begin="0ms;anim2.end" />
-                                    <animate id="anim2" attributeName="fill" from="red" to="rgb(21,52,66)" dur="500ms"
-                                        begin="anim1.end" />
-                                </polygon>
+                                    strokeWidth="3" strokeLinejoin="round" onClick={ShowLangages}
+                                    tabIndex={0}
+                                    aria-label="Voir les langages"
+                                    onKeyDown={e => { if (e.key === "Enter" || e.key === " ") ShowLangages(); }}
+                                />
                             </g>
                         </g >
                     </g >
